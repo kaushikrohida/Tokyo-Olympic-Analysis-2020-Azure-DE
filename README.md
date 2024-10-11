@@ -1,15 +1,23 @@
-# Tokoyo-Olympic-Analysis-2021-Microsoft Azure
-Tokyo Olympics 2021 Analysis Using Microrosft Azure platform
-
-# Microsoft Azure Data Pipeline Project
+# Tokyo Olympic Analysis 2021 - Microsoft Azure Data Pipeline Project
 
 ## Overview
 
-This project demonstrates the development of an end-to-end data pipeline leveraging the Microsoft Azure platform for data ingestion transformation, storage, and analytics. The pipeline processes Tokyo Olympic 2021 data, enabling analysis and visualization through a cloud-native approach. By utilizing Azure services such as Azure Data Factory, Data Lake Storage Gen 2, Databricks, Synapse Analytics, and Tableau, this project outlines a scalable data processing workflow. The goal is to provide actionable insights through interactive dashboards.
-
+This project demonstrates the development of an end-to-end data pipeline leveraging the Microsoft Azure platform for data ingestion, transformation, storage, and analytics. The pipeline processes Tokyo Olympic 2021 data, enabling analysis and visualization through a cloud-native approach. By utilizing Azure services such as Azure Data Factory, Data Lake Storage Gen 2, Databricks, Synapse Analytics, and visualization tools, this project outlines a scalable data processing workflow. The goal is to provide actionable insights through interactive dashboards.
 
 <img width="600" alt="Azure Data Pipeline Flow" src="Images/Azure Data Pipeline Flow.png">
 
+## Table of Contents
+
+1. [Architecture](#architecture)
+2. [How It Works](#how-it-works)
+3. [Prerequisites](#prerequisites)
+4. [Setup and Deployment](#setup-and-deployment)
+5. [Data Sources](#data-sources)
+6. [Data Transformation](#data-transformation)
+7. [Analytics and Visualization](#analytics-and-visualization)
+8. [Conclusion](#conclusion)
+9. [Contributing](#contributing)
+10. [License](#license)
 
 ## Architecture
 
@@ -107,6 +115,66 @@ This project demonstrates the development of an end-to-end data pipeline leverag
 5. **Create Dashboards:**
    - Use Power BI, Looker Studio, or Tableau to create interactive visualizations based on the analysis performed in Synapse Analytics.
 
+## Data Sources
+
+This project utilizes various data sources related to the Tokyo 2021 Olympics, including:
+
+- Athlete information
+- Event results
+- Medal counts
+- Country participation data
+
+The data is primarily stored in CSV format and ingested into the Azure ecosystem for processing.
+
+## Data Transformation
+
+Data transformation is a crucial step in our pipeline. Here's a sample of how we connect to our data lake using Azure Databricks:
+
+```python:Tokyo Olympic Transformation.ipynb
+configs = {
+    "fs.azure.account.auth.type": "OAuth",
+    "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
+    "fs.azure.account.oauth2.client.id": "<your-client-id>",
+    "fs.azure.account.oauth2.client.secret": '<your-client-secret>',
+    "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<your-tenant-id>/oauth2/token"
+}
+
+dbutils.fs.mount(
+    source = "abfss://tokyo-olympic-data@tokyoolympicdatarohida.dfs.core.windows.net",
+    mount_point = "/mnt/tokyoolympic",
+    extra_configs = configs
+)
+```
+
+After mounting the data, we perform various transformations including:
+- Data cleaning and normalization
+- Aggregating medal counts by country
+- Calculating performance metrics for athletes and teams
+
+## Analytics and Visualization
+
+The transformed data is analyzed using Azure Synapse Analytics, allowing for complex queries and insights generation. Visualizations are created using tools like Power BI, Looker Studio, or Tableau, providing interactive dashboards for stakeholders to explore the Olympic data.
+
 ## Conclusion
 
-This project provides a robust and scalable data pipeline leveraging Azure’s cloud ecosystem to handle ingestion, transformation, and visualization. The architecture enables efficient handling of big data while offering valuable insights through analytics and reporting tools. Whether you’re analyzing Olympic data or working on a different dataset, this pipeline is adaptable to various scenarios, supporting data-driven decision-making.
+This project showcases a robust and scalable data pipeline leveraging Azure's cloud ecosystem to handle the ingestion, transformation, and visualization of Tokyo Olympic 2021 data. Through the implementation of this pipeline, we have demonstrated:
+
+1. Efficient data ingestion from various sources using Azure Data Factory.
+2. Scalable data storage solutions with Azure Data Lake Storage Gen 2.
+3. Powerful data transformation capabilities using Azure Databricks.
+4. Advanced analytics and querying with Azure Synapse Analytics.
+5. Insightful visualizations and dashboards using tools like Power BI, Looker Studio, or Tableau.
+
+The architecture we've developed enables efficient handling of big data while offering valuable insights through analytics and reporting tools. This pipeline is not only suitable for Olympic data analysis but is also adaptable to various scenarios, supporting data-driven decision-making across different domains.
+
+By leveraging cloud-native services, we've created a solution that is both scalable and maintainable, capable of handling large volumes of data and complex analytical requirements. This project serves as a template for building similar data pipelines, showcasing the power and flexibility of the Microsoft Azure ecosystem in solving real-world data challenges.
+
+As data continues to grow in volume and importance, solutions like this will become increasingly vital for organizations looking to derive actionable insights from their data assets. This project stands as a testament to the possibilities that emerge when combining cloud computing, big data, and analytics in a cohesive and well-architected solution.
+
+## Contributing
+
+Contributions to this project are welcome. Please fork the repository and submit a pull request with your proposed changes.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
