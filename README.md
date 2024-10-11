@@ -56,6 +56,8 @@ This project demonstrates the development of an end-to-end data pipeline leverag
     - Data from various sources (CSV files, APIs) is ingested using Azure Data Factory.
     - The raw data is stored in Azure Data Lake Gen 2 in its native format for processing.
 
+    ![Ingestion using APIs](Images/Data Ingestion.png)
+
 2. **Data Transformation:**
     - Azure Databricks is used to transform the raw data through cleansing, filtering, and aggregation.
     - Additional enrichment of the dataset occurs here, preparing the data for advanced analytics.
