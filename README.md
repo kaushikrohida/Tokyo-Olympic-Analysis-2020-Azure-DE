@@ -7,7 +7,7 @@ Tokyo Olympics 2021 Analysis Using Microrosft Azure platform
 
 This project demonstrates the development of an end-to-end data pipeline leveraging the Microsoft Azure platform for data ingestion transformation, storage, and analytics. The pipeline processes Tokyo Olympic 2021 data, enabling analysis and visualization through a cloud-native approach. By utilizing Azure services such as Azure Data Factory, Data Lake Storage Gen 2, Databricks, Synapse Analytics, and Tableau, this project outlines a scalable data processing workflow. The goal is to provide actionable insights through interactive dashboards.
 
-<img width="566" alt="Azure" src="Images/Azure Data Pipeline Flow.png">
+<img width="600" alt="Azure Data Pipeline Flow" src="Images/Azure Data Pipeline Flow.png">
 
 ## Architecture
 
@@ -56,14 +56,18 @@ This project demonstrates the development of an end-to-end data pipeline leverag
     - Data from various sources (CSV files, APIs) is ingested using Azure Data Factory.
     - The raw data is stored in Azure Data Lake Gen 2 in its native format for processing.
 
-    ![Ingestion using APIs](Images/Data Ingestion.png)
+    <img width="600" alt="Data Ingestion using APIs" src="Images/Data Ingestion.png">
 
 2. **Data Transformation:**
     - Azure Databricks is used to transform the raw data through cleansing, filtering, and aggregation.
     - Additional enrichment of the dataset occurs here, preparing the data for advanced analytics.
 
+    <img width="600" alt="Azure Databricks - Data Transformation" src="Images/Azure Databricks - Data Transformation.png">
+
 3. **Data Storage:**
     - The transformed data is saved back into Data Lake Gen 2, creating a structured dataset ready for analysis.
+
+    <img width="600" alt="Data Storage" src="Images/Data Storage.png">
 
 4. **Data Analytics:**
     - Azure Synapse Analytics is used to query and analyze the transformed data. Complex SQL queries are run to gain insights into Olympic performances, trends, and statistics.
