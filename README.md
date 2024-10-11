@@ -17,7 +17,6 @@ This project demonstrates the development of an end-to-end data pipeline leverag
 7. [Analytics and Visualization](#analytics-and-visualization)
 8. [Conclusion](#conclusion)
 9. [Contributing](#contributing)
-10. [License](#license)
 
 ## Architecture
 
@@ -174,7 +173,3 @@ As data continues to grow in volume and importance, solutions like this will bec
 ## Contributing
 
 Contributions to this project are welcome. Please fork the repository and submit a pull request with your proposed changes.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
